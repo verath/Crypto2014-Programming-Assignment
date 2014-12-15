@@ -34,16 +34,24 @@ public class LabAssignment {
     }
 
 
-    private void generateKeys() {
-        System.out.println("generateKeys");
+    private void generateKeys(DSA dsa) throws IOException {
+        // Parse "n=5"
+        String n = reader.readLine();
+        int numKeysToGenerate = Integer.parseInt(n.substring(2));
+
+        for(int i = 0; i < numKeysToGenerate; i++) {
+            DSAKeyPair keyPair = dsa.generateKey();
+            writeOutput("x=" + keyPair.getX());
+            writeOutput("y=" + keyPair.getY());
+        }
     }
 
-    private void signDigests() {
+    private void signDigests(DSA dsa) {
         System.out.println("signDigests");
 
     }
 
-    private void verifyDigests() {
+    private void verifyDigests(DSA dsa) {
         System.out.println("verifyDigests");
     }
 
@@ -57,17 +65,18 @@ public class LabAssignment {
             return;
         }
 
+        DSA dsa = new DSA(domainParameter);
         String operation = reader.readLine();
 
         switch (operation) {
             case "genkey":
-                generateKeys();
+                generateKeys(dsa);
                 break;
             case "sign":
-                signDigests();
+                signDigests(dsa);
                 break;
             case "verify":
-                verifyDigests();
+                verifyDigests(dsa);
                 break;
         }
     }
