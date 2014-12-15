@@ -32,7 +32,8 @@ public class LabAssignmentIT {
                 {"inputfiles/invalid1"},
                 {"inputfiles/invalid2"},
                 {"inputfiles/invalid3"},
-                {"inputfiles/invalid4"}
+                {"inputfiles/invalid4"},
+                {"inputfiles/verify"},
         });
     }
 
