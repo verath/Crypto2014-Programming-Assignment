@@ -75,7 +75,7 @@ public class DSA {
     	// u2 = r*w mod q
     	BigInteger u2 = r.multiply(w).mod(q);
     	// v = (((g^u1 * y^u2) mod p) mod q)
-    	BigInteger v = g.modPow(u1, p).multiply(y.modPow(u2, p)).mod(q);
+    	BigInteger v = g.modPow(u1, p).multiply(y.modPow(u2, p)).mod(p).mod(q);
     	
     	return v.equals(r);
     }
