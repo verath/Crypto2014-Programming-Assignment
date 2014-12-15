@@ -1,6 +1,7 @@
 package edu.chalmers.tda351.group149;
 
 import java.io.*;
+import java.math.BigInteger;
 
 /**
  * Created by Peter on 2014-12-14.
@@ -46,13 +47,39 @@ public class LabAssignment {
         }
     }
 
-    private void signDigests(DSA dsa) {
-        System.out.println("signDigests");
-
+    private void signDigests(DSA dsa) throws IOException {
+        String x = reader.readLine().substring(2);
+        String y = reader.readLine().substring(2);
+        
+        DSAKeyPair keyPair = new DSAKeyPair(new BigInteger(x), new BigInteger(y));
+        
+        String line = "";
+        while((line = reader.readLine()) != null) {
+        	line = line.substring(2); // removes two first characters
+        	DSASignaturePair sigPair = dsa.sign(keyPair, new BigInteger(line, 16));
+        	writeOutput("r=" + sigPair.getR());
+        	writeOutput("s=" + sigPair.getS());
+        }
     }
 
-    private void verifyDigests(DSA dsa) {
-        System.out.println("verifyDigests");
+    private void verifyDigests(DSA dsa) throws IOException {
+        String y = reader.readLine().substring(2);
+        
+        String D = "";
+        while((D = reader.readLine()) != null) {
+        	D = D.substring(2);
+        	String r = reader.readLine().substring(2);
+        	String s = reader.readLine().substring(2);
+        	DSASignaturePair sigPair = new DSASignaturePair(new BigInteger(r), new BigInteger(s));
+        	
+        	boolean verified = dsa.verify(new BigInteger(y), new BigInteger(D, 16), sigPair);
+        	
+        	if(verified) {
+        		writeOutput("signature_valid");
+        	} else {
+        		writeOutput("signature_invalid");
+        	}
+        }
     }
 
     public void doAssignment() throws IOException {
