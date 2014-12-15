@@ -1,7 +1,5 @@
 package edu.chalmers.tda351.group149;
 
-import sun.security.util.BigInt;
-
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
