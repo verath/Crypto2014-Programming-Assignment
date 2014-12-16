@@ -67,34 +67,34 @@ public class DSADomainParameter {
             return false;
         }
 
-        if(!q.isProbablePrime(DSADomainParameter.PRIME_CERTAINTY)) {
+        if (!q.isProbablePrime(DSADomainParameter.PRIME_CERTAINTY)) {
             // q is not a prime
             return false;
         }
 
-        if(p.bitLength() != 1024) {
+        if (p.bitLength() != 1024) {
             // p is not a 1024 bit number
             return false;
         }
 
-        if(q.bitLength() != 160) {
+        if (q.bitLength() != 160) {
             // q is not a 160 bit number
             return false;
         }
 
         // (p-1) % q != 0
-        if(!p.subtract(BigInteger.ONE).mod(q).equals(BigInteger.ZERO)) {
+        if (!p.subtract(BigInteger.ONE).mod(q).equals(BigInteger.ZERO)) {
             // q is not a divisor of p-1
             return false;
         }
 
-        if(g.compareTo(BigInteger.ONE) <= 0) {
+        if (g.compareTo(BigInteger.ONE) <= 0) {
             // g <= 1
             return false;
         }
 
         // g^q mod p != 1
-        if(!g.modPow(q, p).equals(BigInteger.ONE)) {
+        if (!g.modPow(q, p).equals(BigInteger.ONE)) {
             return false;
         }
 
