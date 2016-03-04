@@ -40,7 +40,7 @@ public class LabAssignmentIT {
 
     @Test
     public void testForFile() throws Exception {
-        // Simulate system.in, instead feed directly from the edu.chalmers.tda351.group149.inputfiles
+        // Simulate system.in, instead feed directly from the edu/chalmers/crypto2014/group149/inputfiles
         InputStream in = getClass().getResourceAsStream(inputFilePath);
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
