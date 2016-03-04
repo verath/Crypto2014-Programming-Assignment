@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 
-mainClassName = "edu.chalmers.tda351.group149.Main"
+mainClassName = "Main"
 
 version = '1.0'
 
